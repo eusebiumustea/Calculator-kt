@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="default_color_1">#333333</color>
+    <color name="pressed_color_1">#B2333333</color>
+    <color name="default_color_2">#F1A33B</color>
+    <color name="pressed_color_2">#B2F1A33B</color>
+    <color name="default_color_3">#A5A5A5</color>
+    <color name="pressed_color_3">#B2A5A5A5</color>
+</resources>

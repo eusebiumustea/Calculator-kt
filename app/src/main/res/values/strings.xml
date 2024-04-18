@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Calculator</string>
+    <string name="ac_desc">clear button</string>
+    <string name="toggle_neg_desc">make last number negative</string>
+    <string name="toggle_pos_desc">make last number positive</string>
+    <string name="percentage_desc">calculate the rest of divider</string>
+    <string name="divide_desc">divider button</string>
+    <string name="seven_desc">seven</string>
+    <string name="eight_desc">eight</string>
+    <string name="nine_desc">nine</string>
+    <string name="four_desc">four</string>
+    <string name="five_desc">five</string>
+    <string name="six_desc">six</string>
+    <string name="one_desc">one</string>
+    <string name="two_desc">two</string>
+    <string name="three_desc">three</string>
+    <string name="zero_desc">zero</string>
+    <string name="decimal_add_desc">add decimal to last number</string>
+    <string name="equal_desc">equal button</string>
+    <string name="addition_desc">addition</string>
+    <string name="multiply_desc">multiply</string>
+    <string name="subtraction_desc">subtraction</string>
+</resources>
