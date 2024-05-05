@@ -2,9 +2,11 @@ package com.eusebiu.calculator
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -17,17 +19,13 @@ import androidx.core.widget.addTextChangedListener
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class MainActivity : AppCompatActivity() {
-
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        window.statusBarColor = Color.WHITE
-        window.navigationBarColor = Color.BLACK
         setContentView(R.layout.activity_main)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom)
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
         fun View.animateOpacity(from: Float, to: Float, duration: Long = 200) {
@@ -75,7 +73,6 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: NumberFormatException) {
                 expressionInput.text = "0"
-                Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
             }
         }
         if (!storedExpr.isNullOrEmpty()) {
@@ -139,7 +136,6 @@ class MainActivity : AppCompatActivity() {
         val nineBtn = findViewById<ImageButton>(R.id.nineBtn)
         acBtn.setOnTouchListener { v, event ->
            animateOnPressed(event, v)
-
         }
         acBtn.setOnClickListener {
             clearResult()
@@ -170,9 +166,6 @@ class MainActivity : AppCompatActivity() {
         dividerBtn.setOnClickListener {
            addOperator("÷")
         }
-        acBtn.setOnTouchListener { v, event ->
-            animateOnPressed(event, v)
-        }
         percentageBtn.setOnTouchListener { v, event ->
             animateOnPressed(event, v)
         }
@@ -198,11 +191,9 @@ class MainActivity : AppCompatActivity() {
             if (!resultInput.text.contains('.')) {
                 clearResult()
             }
-
             val expr = Expression(expressionInput.text)
             val lastNumber = expr.getLastNumber()
-            println(lastNumber)
-            if (!lastNumber.contains('.') && expr.isNumber(expressionInput.text.last())) {
+            if (!lastNumber.contains('.') && expr.isNumber(expressionInput.text.last()) && !resultInput.text.contains('.')) {
                 addValue(".")
             }
         }
@@ -273,11 +264,11 @@ class MainActivity : AppCompatActivity() {
         zeroBtn.setOnTouchListener { v, event ->
             animateOnPressed(event, v)
         }
-        equalBtn.setOnClickListener {
-           getResult()
-        }
         equalBtn.setOnTouchListener { v, event ->
             animateOnPressed(event, v)
+        }
+        equalBtn.setOnClickListener {
+           getResult()
         }
     }
 }
